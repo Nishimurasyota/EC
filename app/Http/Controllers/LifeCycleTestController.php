@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\SampleServiceProvider;
 use Illuminate\Http\Request;
 
 class LifeCycleTestController extends Controller
@@ -24,7 +25,10 @@ class LifeCycleTestController extends Controller
         $sample = app("sample");
         $sample->run();
 
-        dd($test, app());
+         $test =app("ServiceProviderTest");
+
+
+        dd($test, $sample, app());
     }
 }
 
