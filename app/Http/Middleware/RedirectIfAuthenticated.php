@@ -11,7 +11,7 @@ class RedirectIfAuthenticated
 {
     private const GUARD_USER = "users";
     private const GUARD_OWNER = "owners";
-    private const GUARD_ADMIN = "admin";
+    private const GUARD_ADMIN = "admins";
 
     /**
      * Handle an incoming request.
@@ -27,6 +27,13 @@ class RedirectIfAuthenticated
 
         // foreach ($guards as $guard) {
         //     if (Auth::guard($guard)->check()) {
+        //         if ($guard == self::GUARD_ADMIN) {
+        //             return redirect(RouteServiceProvider::ADMIN_HOME);
+        //         }elseif($guard == self::GUARD_OWNER){
+        //             return redirect(RouteServiceProvider::OWNER_HOME);
+        //         }else{
+        //             return redirect(RouteServiceProvider::HOME);
+        //         }
         //         return redirect(RouteServiceProvider::HOME);
         //     }
         // }
