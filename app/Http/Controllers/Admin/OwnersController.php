@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Owner;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,18 +23,26 @@ class OwnersController extends Controller
 
     public function index()
     {
+
+        $date_now = Carbon::now();
+        $date_parse = Carbon::parse(now());
+        echo $date_now;
+        echo $date_parse;
+
         // Eloquentの場合
         $e_owner_all = Owner::all();
         // QueryBuilderの場合
-        $q_owner_get = DB::table("owners")->select("name")->get();
+        $q_owner_get = DB::table("owners")->select("name", "created_at")->get();
         //firstの動作確認用
-        $q_owner_first = DB::table("owners")->select("name")->first();
+        // $q_owner_first = DB::table("owners")->select("name")->first();
 
-        $c_owner_test = collect([
-            "name" => "テスト",
-        ]);
+        // $c_owner_test = collect([
+        //     "name" => "テスト",
+        // ]);
 
-        dd($e_owner_all, $q_owner_get, $q_owner_first, $c_owner_test);
+        // dd($e_owner_all, $q_owner_get, );
+
+        return view("admin.owners.index", compact("e_owner_all", "q_owner_get"));
     }
 
     /**
