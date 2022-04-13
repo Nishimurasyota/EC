@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Owner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OwnersController extends Controller
 {
@@ -20,7 +22,18 @@ class OwnersController extends Controller
 
     public function index()
     {
-        dd("オーナー一覧です");
+        // Eloquentの場合
+        $e_owner_all = Owner::all();
+        // QueryBuilderの場合
+        $q_owner_get = DB::table("owners")->select("name")->get();
+        //firstの動作確認用
+        $q_owner_first = DB::table("owners")->select("name")->first();
+
+        $c_owner_test = collect([
+            "name" => "テスト",
+        ]);
+
+        dd($e_owner_all, $q_owner_get, $q_owner_first, $c_owner_test);
     }
 
     /**
