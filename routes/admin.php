@@ -11,9 +11,9 @@ use App\Http\Controllers\Admin\Auth\VerifyEmailController;
 use App\Http\Controllers\Admin\OwnersController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('admin.welcome');
-});
+// Route::get('/', function () {
+//     return view('admin.welcome');
+// });
 
 Route::prefix("admin")->middleware("auth:admins")->group(function (){
     Route::get('index',[OwnersController::class, 'expiredOwnerIndex'])->name("expired-owners.index");
@@ -21,7 +21,7 @@ Route::prefix("admin")->middleware("auth:admins")->group(function (){
 });
 
 Route::resource("owners", OwnersController::class)
-->middleware("auth:admins");
+->middleware("auth:admins")->except(["show"]);
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
