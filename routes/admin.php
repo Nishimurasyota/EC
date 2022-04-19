@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix("admin")->middleware("auth:admins")->group(function (){
     Route::get('index',[OwnersController::class, 'expiredOwnerIndex'])->name("expired-owners.index");
-    ROute::post("destroy/{owner}",[OwnersController::class, 'expiredOwnerDestroy'])->name("expired-owners.destroy");
+    Route::post("destroy/{owner}",[OwnersController::class, 'expiredOwnerDestroy'])->name("expired-owners.destroy");
 });
 
 Route::resource("owners", OwnersController::class)
