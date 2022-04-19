@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('owner.welcome');
 });
 
-Route::prefix("shop")->middleware("auth:owners")->group(function () {
+Route::prefix("shops")->middleware("auth:owners")->group(function () {
     Route::get('index', [ShopController::class, 'index'])->name("shop.index");
     ROute::get("edit/{shop}", [ShopController::class, 'edit'])->name("shop.edit");
     ROute::post("update/{shop}", [ShopController::class, 'update'])->name("shop.update");
