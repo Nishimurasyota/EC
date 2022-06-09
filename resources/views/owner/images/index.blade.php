@@ -14,19 +14,21 @@
                             class="text-white bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-600 rounded text-lg">新規登録</button>
                     </div>
                     <x-flash-message status='session("status")' />
-                    @foreach ($images as $image)
-                        <div class="w-1/4 p-4">
-                            <a href="{{ route('owner.image.edit', [$image->id]) }}">
-                                <div class="border rounded-md p-4">
-                                    <div class="text-xl">
-                                        {{ $image->title }}
+                    <div class="flex flex-wrap">
+                        @foreach ($images as $image)
+                            <div class="w-1/4 p-4">
+                                <a href="{{ route('owner.images.edit', [$image->id]) }}">
+                                    <div class="border rounded-md p-4">
+                                        <div class="text-xl">
+                                            {{ $image->title }}
+                                        </div>
+                                        <x-thumbnail :filename="$image->filename" type="products" />
                                     </div>
-                                    <x-thumbnail :filename="$shop->filename" type="products" />
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                    {{$images->links()}}
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                    {{ $images->links() }}
                 </div>
             </div>
         </div>

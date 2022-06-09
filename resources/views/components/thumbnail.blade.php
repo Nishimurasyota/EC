@@ -3,7 +3,7 @@
         $path = 'storage/shops/';
     }
     elseif($type === "products"){
-        $path = 'storage/productss/';
+        $path = 'storage/products/';
     }
 @endphp
 
