@@ -11,6 +11,9 @@ if ($name === 'image3') {
 if ($name === 'image4') {
     $modal = 'modal-4';
 }
+if ($name === 'image5') {
+    $modal = 'modal-5';
+}
 @endphp
 
 <div class="modal micromodal-slide" id="{{ $modal }}" aria-hidden="true">
@@ -28,7 +31,7 @@ if ($name === 'image4') {
                         <div class="w-1/4 p-2 md:p-4">
                             <div class="border rounded-md p-2 md:p-4">
                                 <img class="image" data-id="{{ $name }}_{{ $image->id }}"
-                                    data-file="{{ $image->fillname }}" data-path="{{ asset('storage/products/') }}"
+                                    data-file="{{ $image->filename }}" data-path="{{ asset('storage/products/') }}"
                                     data-modal="{{ $modal }}"
                                     src="{{ asset('storage/products/' . $image->filename) }}">
                                 <div class="text-gray-700">
@@ -48,7 +51,7 @@ if ($name === 'image4') {
 
 <div class="flex justify-around items-center mb-4">
     <a data-micromodal-trigger="{{ $modal }}" href='javascript:;'>ファイルを選択</a>
-    <div class=“w-1/4”>
+    <div class="w-1/4">
         <img id="{{ $name }}_thumbnail" src="">
     </div>
 </div>
