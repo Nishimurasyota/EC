@@ -168,6 +168,20 @@ class ProductController extends Controller
         $request->validate([
             'current_quantity' => ['required', 'integer'],
         ]);
+
+        $product = Product::findOrFail($id);
+        $quantity = Stock::where("product_id",$product->id)
+        ->sum("quantity");
+
+        if($request->current_quantity !== $quantity){
+            $id = $request->route()->parameter("product");
+            return redirect()->route("owner.products.edit",["product"=>$id])
+            ->with([
+                "message", "在庫数が変更されました、再度確認してください。",
+                "status" => "alert",
+            ]);
+        }
+
     }
 
     /**
