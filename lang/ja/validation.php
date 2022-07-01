@@ -137,5 +137,7 @@ return [
         'name' =>'名前',
         'email' =>'メールアドレス',
         'password' =>'パスワード',
+        'quantity' =>'在庫',
+        'is_selling' =>'販売状況',        
     ]
 ];
