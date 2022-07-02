@@ -210,11 +210,10 @@ class ProductController extends Controller
                 Log::error($e);
                 throw $e;
             }
-    
             return redirect()
                 ->route("owner.products.index")
                 ->with([
-                    "message", "商品情報を編集しました",
+                    "message" => "商品情報を削除しました",
                     "status" => "info",
                 ]);
         }
@@ -229,6 +228,12 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Product::findOrFail($id)->delete();
+        return redirect()
+            ->route("owner.products.index")
+            ->with([
+                "message" => "商品情報を削除しました",
+                "status" => "alert",
+            ]);
     }
 }
