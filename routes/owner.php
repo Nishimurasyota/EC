@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix("shops")->middleware("auth:owners")->group(function () {
     Route::get('index', [ShopController::class, 'index'])->name("shop.index");
-    ROute::get("edit/{shop}", [ShopController::class, 'edit'])->name("shop.edit");
-    ROute::post("update/{shop}", [ShopController::class, 'update'])->name("shop.update");
+    Route::get("edit/{shop}", [ShopController::class, 'edit'])->name("shop.edit");
+    Route::post("update/{shop}", [ShopController::class, 'update'])->name("shop.update");
 });
 
 Route::resource("images", ImageController::class)
