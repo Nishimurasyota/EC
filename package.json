@@ -23,6 +23,7 @@
         "webpack": "^5.72.1"
     },
     "dependencies": {
-        "micromodal": "^0.4.10"
+        "micromodal": "^0.4.10",
+        "swiper": "^6.7.0"
     }
 }
