@@ -12,3 +12,7 @@ storageフォルダにリンクを行い
 
 storage/app/public/productsフォルダ内に保存されると表示されます
 （productsフォルダがない場合は作成してください）
+
+(Public/sample1.jpgを
+Storage/app/public/shopsフォルダに
+配置してほしい)
