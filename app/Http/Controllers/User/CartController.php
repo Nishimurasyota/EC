@@ -95,7 +95,7 @@ class CartController extends Controller
 
         $publickey = env("STRIPE_PUBLIC_KEY");
 
-        dd("test");
+        // dd("test");
 
         return view("user.checkout",compact("session","publickey"));    
     }
