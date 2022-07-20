@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\PrimaryCategory;
 use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Http\Request;
@@ -59,7 +60,11 @@ class ItemController extends Controller
         // ,'image1.filename as filename')
         // ->get();
 
-        return view("user.index" ,compact("products"));
+        $categories = PrimaryCategory::with("secondary")->get();
+
+        // dd($request);
+
+        return view("user.index" ,compact("products","categories"));
     }
 
     public function show($id){
