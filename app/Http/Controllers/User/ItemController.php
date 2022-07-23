@@ -34,8 +34,8 @@ class ItemController extends Controller
 
         $products = Product::AvailableItems()
         ->selectCategory($request->category ?? '0')
+        ->searchKeyword($request->keyword)
         ->sortOrder($request->sort) 
-        ->SortOrder($request->sort)
         ->paginate($request->pagination ?? '20');
         // $stocks = DB::table('t_stocks')
         // ->select('product_id',
