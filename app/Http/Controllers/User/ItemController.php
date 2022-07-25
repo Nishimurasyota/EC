@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendThanksMail;
 use App\Mail\TestMail;
 use App\Models\PrimaryCategory;
 use App\Models\Product;
@@ -34,8 +35,12 @@ class ItemController extends Controller
 
     public function index(Request $request){
 
-        Mail::to("test@example.com")
-        ->send(new TestMail());
+        // 同期
+        // Mail::to("test@example.com")
+        // ->send(new TestMail());
+
+        // 非同期
+        SendThanksMail::dispatch();
 
         $products = Product::AvailableItems()
         ->selectCategory($request->category ?? '0')
