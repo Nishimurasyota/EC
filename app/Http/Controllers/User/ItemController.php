@@ -40,7 +40,7 @@ class ItemController extends Controller
         // ->send(new TestMail());
 
         // 非同期
-        SendThanksMail::dispatch();
+        // SendThanksMail::dispatch();
 
         $products = Product::AvailableItems()
         ->selectCategory($request->category ?? '0')
