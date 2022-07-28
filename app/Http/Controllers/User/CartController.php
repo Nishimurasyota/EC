@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Constants\Common;
 use App\Http\Controllers\Controller;
+use App\Jobs\SendOrderedMail;
 use App\Jobs\SendThanksMail;
 use App\Models\Cart;
 use App\Models\Stock;
@@ -56,14 +57,8 @@ class CartController extends Controller
 
     public function checkout(){
 
-        ///
-        $items = Cart::where("user_id",Auth::id())->get();
-        $products = CartService::getItemsInCart($items);
-        $user = User::findOrFail(Auth::id());
-        SendThanksMail::dispatch($products,$user);
-        dd("メール送信テスト");
-        ///
 
+        $user = User::findOrFail(Auth::id());
         $products = $user->products;
 
 
@@ -111,6 +106,16 @@ class CartController extends Controller
         return view("user.checkout",compact("session","publickey"));    
     }
     public function success(){
+
+                ///
+                $items = Cart::where("user_id",Auth::id())->get();
+                $products = CartService::getItemsInCart($items);
+                $user = User::findOrFail(Auth::id());
+                // SendThanksMail::dispatch($products,$user);
+                foreach($products as $product){
+                    SendOrderedMail::dispatch($product, $user);
+                }
+                ///
 
         Cart::where("user_id",Auth::id())->delete();
         

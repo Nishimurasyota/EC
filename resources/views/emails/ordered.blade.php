@@ -1,4 +1,4 @@
-<p class="mb-4">{{ $user->name }}</p>
+<p class="mb-4">{{ $user->ownerName }}sまの商品が注文されました</p>
 
 <p class="mb-4">下記のご注文ありがとうございmす。</p>
 
@@ -11,3 +11,10 @@
 </ul>
 
 @endforeach
+
+<div class="mb-4">
+    購入者情報
+</div>
+<ul>
+    <li>{{ $user->name }}様</li>
+</ul>
